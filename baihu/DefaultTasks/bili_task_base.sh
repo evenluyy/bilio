@@ -429,6 +429,8 @@ run_task() {
     cd $baihu_bili_repo_dir/src/Ray.BiliBiliTool.Console
 
     if [ "$prefer_mode" == "dotnet" ]; then
+        unset version
+        export version=""
         # 动态创建临时 props 文件以禁用警告，保持仓库根目录整洁
         local props_file="$baihu_bili_repo_dir/Directory.Build.props"
         printf '<Project>\n  <PropertyGroup>\n    <NoWarn>$(NoWarn);NETSDK1188;CS9057;CS8618;CS9042;CS8625;CS8603;CS8602;CS8601;CS8600;CS8604</NoWarn>\n  </PropertyGroup>\n</Project>' > "$props_file"
